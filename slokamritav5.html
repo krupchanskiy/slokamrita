@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhajanāmṛta - Коллекция шлок</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'PT Serif', Georgia, serif;
+      background: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app {
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+
+    header {
+      background: white;
+      padding: 12px 20px;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 400;
+      color: #1a1a1a;
+      letter-spacing: -0.3px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .search-box {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 15px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 14px;
+      font-family: system-ui, -apple-system, sans-serif;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: #B8936E;
+      color: white;
+      font-weight: 500;
+    }
+
+    .tab-btn:not(.active) {
+      background: #e8e8e8;
+      color: #666;
+    }
+
+    main {
+      flex: 1;
+      padding: 0;
+      padding-bottom: 90px;
+      overflow-y: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 0;
+      padding: 20px;
+      margin-bottom: 0;
+      border-bottom: 1px solid #f0f0f0;
+      box-shadow: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      transform: none;
+      background: #fafafa;
+      box-shadow: none;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      font-size: 14px;
+      color: #666;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .card-count {
+      font-size: 13px;
+      color: #999;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 430px;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0 16px;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-family: system-ui, -apple-system, sans-serif;
+      white-space: nowrap;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 16px 8px;
+      background: #fafafa;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 600;
+      color: #B8936E;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #666;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .section {
+      background: white;
+      border-radius: 0;
+      padding: 20px;
+      margin-bottom: 0;
+      box-shadow: none;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: white;
+      border-radius: 0;
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .list-item:hover {
+      background: #fafafa;
+      transform: none;
+    }
+
+    .collection-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .shloka-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .shloka-item:hover {
+      background: #fafafa;
+    }
+
+    .shloka-item:last-child {
+      border-bottom: none;
+    }
+
+    .shloka-number {
+      font-size: 14px;
+      color: #999;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 500;
+      min-width: 24px;
+    }
+
+    .shloka-info {
+      flex: 1;
+    }
+
+    .shloka-title {
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .shloka-book {
+      font-size: 13px;
+      color: #999;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .play-btn-container {
+      position: relative;
+    }
+
+    .transliteration {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      white-space: pre-line;
+      color: #B8936E;
+    }
+
+    .transliteration.syllables-mode {
+      font-weight: 500;
+    }
+
+    .transliteration.syllables-mode .stress {
+      color: #ea9805;
+      font-weight: 700;
+    }
+
+    .translation {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 24px 0;
+    }
+
+    .tattvas-label {
+      font-size: 13px;
+      color: #999;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tattva-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tattva-tag {
+      padding: 8px 16px;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      font-size: 14px;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tattva-tag:hover {
+      background: #e8e8e8;
+      border-color: #B8936E;
+    }
+
+    .audio-menu {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 8px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 8px;
+      min-width: 180px;
+      z-index: 1001;
+    }
+
+    .audio-menu-item {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #333;
+      transition: all 0.2s;
+    }
+
+    .audio-menu-item:hover {
+      background: #f5f5f5;
+    }
+
+    .audio-menu-item.active {
+      background: #f5f5f5;
+    }
+
+    .mini-player {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 390px;
+      width: calc(100% - 40px);
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+      border: 1px solid #e0e0e0;
+    }
+
+    .player-label {
+      font-size: 11px;
+      color: #999;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .player-title {
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .player-book {
+      font-size: 13px;
+      color: #666;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 30%;
+      height: 100%;
+      background: #B8936E;
+      transition: width 0.3s;
+    }
+
+    .slide-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .slide-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      background: linear-gradient(135deg, #4a4a4a 0%, #2c2c2c 100%);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      color: white;
+    }
+
+    .slide-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .slide-modal-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .slide-text {
+      font-size: 28px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      font-family: 'PT Serif', Georgia, serif;
+    }
+
+    .slide-author {
+      font-size: 16px;
+      opacity: 0.9;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .slide-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+
+    .slide-nav:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .slide-nav-prev {
+      left: -70px;
+    }
+
+    .slide-nav-next {
+      right: -70px;
+    }
+
+    .slide-counter {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header>
+      <div class="header-top">
+        <div style="width: 32px;"></div>
+
+        <div class="logo-container" onclick="goHome()" style="cursor: pointer;">
+          <svg width="160" height="44" viewBox="0 0 195.28 54.88" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <style>
+                .st0 {
+                  fill: #ea9805;
+                }
+              </style>
+            </defs>
+            <g>
+              <path
+                d="M166.85,21.07v5.56h4.92l.11.14v.54s-4.91,0-4.91,0l-.13.13v13.43c0,.25.19,1.07.3,1.33.65,1.49,2.69,1.39,3.68.26,1.18-1.34.63-2.13,1.14-3.48.93-2.44,4.99-3.54,7.15-4.57.95-.45,1.99-.91,2.11-2.08.11-1.08.07-3.51-.56-4.4-1.14-1.59-4.7-1.3-5.94.12,2.36.71,2.12,4.14-.65,3.89-1.78-.16-1.95-2.36-1.02-3.59,1.68-2.21,6.41-2.71,8.8-1.62,2.15.98,2.37,3.22,2.46,5.33.13,3.23-.29,6.86,0,10.01.15,1.65,1.68,1.1,2.57.38l.34.56c-1.98,1.95-6.16,1.9-6.03-1.67-1.6,2.87-5.74,3.92-8.39,1.88l-.82-1.02c-1.24,3.19-6.39,3.08-7.66,0-.16-.39-.47-1.53-.47-1.92v-12.83l-.13-.13h-2.18c.1.32.35.57.41.92.23,1.39-.48,2.88-2.07,2.75-2.02-.16-2.09-2.77-.48-3.63-.56-.59-1.65-.2-2.27.13-1.81.97-2.99,3.62-3.13,5.6-.15,2.16-.15,5.54,0,7.7s1.67,2.52,3.6,2.52v.77c-.25.03-.48-.08-.72-.09-3.6-.13-7.19,0-10.79-.09-1.67-.04-3.35.05-5.01.17v-.77c1.41.05,2.08-.44,2.22-1.85-.17-3.68.27-7.63.01-11.28-.08-1.12-.33-2.37-1.52-2.76-3.14-1.01-5.42,2.3-5.59,5.07.17,2.89-.23,6.04,0,8.9.13,1.62,1.08,1.95,2.57,1.92l-.04.69c-.1.16-.42,0-.6,0-2.41-.06-4.83-.15-7.24.09v-.77c1.41.05,2.08-.44,2.22-1.85-.17-3.68.27-7.63.01-11.28-.15-2.23-1.23-3.4-3.57-2.79-5.15,1.36-3.17,10.48-3.52,14.32.17,1.28.99,1.67,2.2,1.6v.77s-2.61-.17-2.61-.17l-5.23.18-.09-.26c-2.33,1.02-4.96.49-4.97-2.48-.59,1.04-1.43,1.86-2.52,2.35-3.29,1.49-7.72.11-6.83-4.17.44-2.12,2.83-3.2,4.63-4.02,1.21-.55,4.55-1.49,4.76-2.94.13-.9.06-3.19-.23-4.04-.53-1.56-2.12-1.75-3.58-1.65-.9.06-2.12.4-2.61,1.2,1.91.43,2.17,3.56.04,3.84-2.36.31-2.99-2.19-1.62-3.76,1.86-2.12,6.88-2.64,9.2-1.15,1.45.94,1.8,2.66,1.89,4.27.2,3.46-.3,7.29,0,10.69.15,1.69,1.58,1.31,2.53.47.18.26.51.49.21.77,1.07.01,1.62-.76,1.71-1.75-.25-3.81.33-8.04,0-11.8-.14-1.54-.96-2.42-2.57-2.27v-.77c1.88.17,3.83.19,5.65-.34v3.76l.87-1.48c1.74-2.92,7.64-3.48,8.89.07.09.24.28,1.37.38,1.41,1.04-2.99,4.07-4.46,7.13-3.7,2.74.68,3,2.93,3.1,5.37.13,3.15-.27,6.67,0,9.76.1,1.2.75,1.74,1.93,1.83s2.47-.28,2.6-1.68c-.27-3.88.39-8.32,0-12.13-.15-1.45-1.02-2.19-2.49-2.13l-.08-.73c1.88.16,3.83.19,5.65-.34v4.11l.62-1.22c1.19-1.97,2.98-3.53,5.45-2.82.23.07.45.24.67.28.92.15,2.16-.1,3.12,0v-5.13c1.02.03,2.02-.18,3-.43ZM115.38,40.35v-6.54c-2.22,1.97-6.35,2.17-6.51,5.85s3.35,4.18,5.53,2.02c.16-.16.95-1.18.98-1.33ZM181.24,33.81c-2.16,1.93-6.27,2.13-6.51,5.68-.16,2.32.94,3.69,3.36,3.36,1.36-.18,2.43-1.43,3.15-2.5v-6.54Z" />
+              <path
+                d="M94.66,17.56v16.76c.51-.11,1.03-.2,1.51-.41.96-.41,3.17-2.73,3.93-3.61,1.77-2.03,1.14-2.99-1.5-2.99v-.68c2.25.13,4.51.25,6.77,0v.68c-.96.12-1.78.54-2.52,1.12l-4.57,4.81,6.67,9.08c.47.56,1.08.91,1.8,1.04l-.02.58-.12.13-3.68-.17-2.69.17v-.77c.56.06,1.29-.36.93-.97l-4.48-6.47c-.52-.59-1.24-.81-2.01-.85v6.71c0,.1.25.75.32.87.38.65,1.22.73,1.90.71v.77s-5.01-.17-5.01-.17l-2.86.17v-.72c1.55-.07,2.46-.37,2.57-2.06v-20.36c-.15-1.55-.98-2.38-2.57-2.27v-.77c1.88.16,3.83.21,5.65-.34Z" />
+              <path
+                d="M63.33,19.97h.76s-.17,6.92-.17,6.92h-.77c-.28-2.7-1.45-5.83-4.44-6.39-4.76-.9-7.07,4.1-3.62,7.29,3.06,2.82,9.67,4.66,10.1,9.49.57,6.38-6.01,8.82-11.1,6.39-1.24-.59-2.37-1.88-2.51.58h-.86s.17-8.04.17-8.04h.77c.21,2.89,1.13,6.4,4.24,7.36,2.32.72,5.29.03,6.06-2.5,2.4-7.87-11.63-7.5-11.07-15.93.31-4.64,5.42-6.51,9.31-4.85,1.36.58,2.84,2.5,3.12-.32Z" />
+              <path
+                d="M80.34,26.22c6.81-.63,9.13,4.47,8.76,10.45-.25,3.98-2.47,7.48-6.73,7.82-6.99.55-9.23-5.13-8.51-11.15.44-3.67,2.57-6.76,6.48-7.13ZM80.85,26.9c-2.27.31-3.23,2.96-3.55,4.92-.55,3.35-.75,12.52,4.56,11.99,2.01-.2,3.08-2.18,3.51-3.93.85-3.43,1.18-13.75-4.52-12.98Z" />
+              <path
+                d="M71.2,17.56v23.73c0,.07.11.61.14.71.34,1.17,1.33,1.33,2.43,1.3v.77c-.77-.16-1.57-.06-2.35-.09-.16,0-.33-.08-.51-.09-1.76-.03-3.53.05-5.27.17v-.72c1.85-.08,2.46-.55,2.57-2.4-.34-6.39.44-13.25,0-19.59-.12-1.68-.69-2.81-2.57-2.69v-.77c1.84.15,3.78.22,5.57-.34Z" />
+              <path d="M63.99,14.21l-8.81,3.39-.51-.62,5.62-4.89c1.04.09,2.42.17,3.31.77.56.38.4.73.39,1.34Z" />
+              <rect x="105.79" y="20.64" width="13.53" height="1.03" />
+              <path d="M151.93,47.6c3.13-.53,3.38,4.02.57,4.16-2.61.13-2.93-3.76-.57-4.16Z" />
+            </g>
+            <g>
+              <path class="st0"
+                d="M17.27,17.77h20.29v4.46h-20.29c-1.21,0-2.19-.98-2.19-2.19v-.07c0-1.21.98-2.19,2.19-2.19Z" />
+              <path class="st0"
+                d="M14.59,40.28h20.29v4.46H14.59c-1.21,0-2.19-.98-2.19-2.19v-.07c0-1.21.98-2.19,2.19-2.19Z"
+                transform="translate(47.27 85.01) rotate(-180)" />
+              <path class="st0"
+                d="M13.24,23.4h16v4.46H13.24c-1.21,0-2.19-.98-2.19-2.19v-.07c0-1.21.98-2.19,2.19-2.19Z" />
+              <path class="st0" d="M19.54,29.02h16v4.46h-16c-1.21,0-2.19-.98-2.19-2.19v-.07c0-1.21.98-2.19,2.19-2.19Z"
+                transform="translate(52.88 62.5) rotate(-180)" />
+              <path class="st0" d="M22.63,34.65h16v4.46h-16c-1.21,0-2.19-.98-2.19-2.19v-.07c0-1.21.98-2.19,2.19-2.19Z"
+                transform="translate(59.07 73.76) rotate(180)" />
+              <path class="st0"
+                d="M27.5,15.78c-.54.07-1.27-.06-1.84,0l-2.28.5c.64-1.47-.4-3.12-.43-4.70-.08-4.49,4.69-5.11,8.15-5.24,1.03,3.68,1.31,8.75-3.61,9.43ZM27.59,11.68c-2.2,3,2.12,2.97,2.26.27.17-3.31-5.02-4.14-5.22-1.08-.11,1.77,1.46,1.42,2.34.43l.62.38Z" />
+            </g>
+          </svg>
+        </div>
+
+        <div style="display: flex; gap: 8px;">
+          <button class="icon-btn" id="shareBtn" style="display: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+            </svg>
+          </button>
+
+          <button class="icon-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="search-box" id="searchBox">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input type="text" placeholder="Поиск шлок...">
+      </div>
+
+      <div class="tabs" id="catalogTabs">
+        <button class="tab-btn active" onclick="showCatalogTab('books')">Книги</button>
+        <button class="tab-btn" onclick="showCatalogTab('authors')">Авторы</button>
+        <button class="tab-btn" onclick="showCatalogTab('tattvas')">Таттвы</button>
+        <button class="tab-btn" onclick="showCatalogTab('collections')">Подборки</button>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <!-- Catalog View -->
+      <div id="catalogView">
+        <div id="booksTab">
+          <div class="card" onclick="openCategory('book', 'Бхагавад-гита', 700)">
+            <div class="card-title">Бхагавад-гита</div>
+            <div class="card-count">Вьясадева • 700 шлок</div>
+          </div>
+          <div class="card" onclick="openCategory('book', 'Шримад Бхагаватам', 18000)">
+            <div class="card-title">Шримад Бхагаватам</div>
+            <div class="card-count">Вьясадева • 18,000 шлок</div>
+          </div>
+          <div class="card" onclick="openCategory('book', 'Гитавали', 155)">
+            <div class="card-title">Гитавали</div>
+            <div class="card-count">Говинда дас Кавираджа • 155 шлок</div>
+          </div>
+        </div>
+
+        <div id="authorsTab" class="hidden">
+          <div class="card" onclick="openCategory('author', 'Вьясадева', 18700)">
+            <div class="card-title">Вьясадева</div>
+            <div class="card-count">18,700 шлок • 2 книги</div>
+          </div>
+          <div class="card" onclick="openCategory('author', 'Говинда дас Кавираджа', 155)">
+            <div class="card-title">Говинда дас Кавираджа</div>
+            <div class="card-count">155 шлок • 1 книга</div>
+          </div>
+        </div>
+
+        <div id="tattvasTab" class="hidden">
+          <div class="list-item" onclick="openCategory('tattva', 'Душа (Атма)', 234)">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #B8936E;"></div>
+              <span>Душа (Атма)</span>
+            </div>
+            <span style="font-size: 14px; color: #999; font-family: system-ui; font-weight: 500;">234</span>
+          </div>
+          <div class="list-item" onclick="openCategory('tattva', 'Кришна', 187)">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #B8936E;"></div>
+              <span>Кришна</span>
+            </div>
+            <span style="font-size: 14px; color: #999; font-family: system-ui; font-weight: 500;">187</span>
+          </div>
+        </div>
+
+        <div id="collectionsTab" class="hidden">
+          <div class="card" onclick="openCategory('collection', 'Утренние шлоки', 12)">
+            <div class="card-title">Утренние шлоки</div>
+            <div class="card-count">12 шлок</div>
+          </div>
+          <div class="card" onclick="openCategory('collection', 'Мангала-арати', 8)">
+            <div class="card-title">Мангала-арати</div>
+            <div class="card-count">8 шлок</div>
+          </div>
+          <div class="card" onclick="openCategory('collection', 'Для заучивания', 25)">
+            <div class="card-title">Для заучивания</div>
+            <div class="card-count">25 шлок</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Shlokas View -->
+      <div id="myShlokas View" class="hidden">
+        <div class="section">
+          <h2 class="section-title">Мои коллекции</h2>
+          <div
+            style="display: flex; justify-content: space-around; padding: 8px 0 20px; border-bottom: 1px solid #f0f0f0; margin-bottom: 20px;">
+            <div style="text-align: center;">
+              <div style="font-size: 20px; font-weight: 600; color: #B8936E; margin-bottom: 2px;">1,247</div>
+              <div style="font-size: 11px; color: #999; font-family: system-ui;">Шлок</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 20px; font-weight: 600; color: #B8936E; margin-bottom: 2px;">24</div>
+              <div style="font-size: 11px; color: #999; font-family: system-ui;">Книги</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 20px; font-weight: 600; color: #B8936E; margin-bottom: 2px;">18</div>
+              <div style="font-size: 11px; color: #999; font-family: system-ui;">Авторов</div>
+            </div>
+          </div>
+          <div class="list-item" onclick="openCollection('favorites')">
+            <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+              <span style="font-size: 24px;">⭐</span>
+              <span style="font-size: 16px; color: #1a1a1a; font-family: system-ui;">Избранное</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 14px; color: #999; font-family: system-ui; font-weight: 500;">12</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </div>
+          </div>
+          <div class="list-item" onclick="openCollection('daily')">
+            <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+              <span style="font-size: 24px;">🌅</span>
+              <span style="font-size: 16px; color: #1a1a1a; font-family: system-ui;">Ежедневная практика</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 14px; color: #999; font-family: system-ui; font-weight: 500;">8</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About View -->
+      <div id="aboutView" class="hidden">
+        <div class="section">
+          <h2 class="section-title">О проекте Bhajanāmṛta</h2>
+          <div style="font-size: 15px; line-height: 1.7; color: #333; font-family: system-ui;">
+            <p style="margin-bottom: 16px;">Bhajanāmṛta — это коллекция шлок из священных писаний вайшнавской традиции.
+            </p>
+            <p style="margin-bottom: 16px;">Проект создан для того, чтобы помочь практикующим изучать, запоминать и
+              углублять понимание философии bhakti-yoga через санскритские тексты.</p>
+            <p style="margin-bottom: 16px;">Здесь вы найдёте шлоки из Бхагавад-гиты, Шримад Бхагаватам, произведений
+              ачарьев Гаудия-вайшнавизма и другие тексты.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Возможности</h2>
+          <div style="font-size: 15px; line-height: 1.7; color: #333; font-family: system-ui;">
+            <p style="margin-bottom: 12px;">• Поиск шлок по книгам, авторам и таттвам</p>
+            <p style="margin-bottom: 12px;">• Транслитерация, пословный перевод и комментарии</p>
+            <p style="margin-bottom: 12px;">• Аудио для заучивания и повторения</p>
+            <p style="margin-bottom: 12px;">• Создание личных коллекций</p>
+            <p style="margin-bottom: 12px;">• Связи между шлоками по темам</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category View (from Catalog) -->
+      <div id="categoryView" class="hidden">
+        <div class="section">
+          <h2 class="section-title" id="categoryName">Бхагавад-гита</h2>
+          <div style="font-size: 14px; color: #666; font-family: system-ui;">📝 <span id="categoryCount">700</span> шлок
+          </div>
+        </div>
+
+        <div class="section" id="categoryShlokasList">
+          <!-- Shlokas will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Collection View -->
+      <div id="collectionView" class="hidden">
+        <div class="section">
+          <div class="collection-header">
+            <span style="font-size: 32px;" id="collectionIcon">⭐</span>
+            <h2 class="section-title" style="margin: 0;" id="collectionName">Избранное</h2>
+          </div>
+          <div style="font-size: 14px; color: #666; font-family: system-ui;">📝 <span id="collectionCount">12</span>
+            шлок</div>
+        </div>
+
+        <div class="section" id="collectionShlokasList">
+          <!-- Shlokas will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Shloka View -->
+      <div id="shlokaView" class="hidden">
+        <div class="section">
+          <h1 style="font-size: 24px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px;">Бхаджахаху ре мана</h1>
+
+          <div
+            style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-family: system-ui; margin-bottom: 24px;">
+            <div style="color: #666;">
+              <span style="color: #999;">Книга:</span>
+              <span style="color: #B8936E;"> Гитавали</span>
+            </div>
+            <div style="color: #666;">
+              <span style="color: #999;">Автор:</span>
+              <span style="color: #B8936E;"> Говинда дас Кавираджа</span>
+            </div>
+            <div style="color: #666;">
+              <span style="color: #999;">Размер:</span>
+              <span style="color: #B8936E;"> Чаупаи</span>
+            </div>
+          </div>
+
+          <!-- Main Tabs -->
+          <div class="tabs" style="margin-bottom: 16px;">
+            <button class="tab-btn active" onclick="showShlokaMainTab('shloka')">Шлока</button>
+            <button class="tab-btn" onclick="showShlokaMainTab('study')">Дополнительно</button>
+          </div>
+
+          <!-- Shloka Tab Content -->
+          <div id="shlokaTabContent">
+            <!-- Sub Tabs -->
+            <div class="tabs" style="margin-bottom: 20px;">
+              <button class="tab-btn active" onclick="showShlokaSubTab('text')">Текст</button>
+              <button class="tab-btn" onclick="showShlokaSubTab('word')">Пословно</button>
+              <button class="tab-btn" onclick="showShlokaSubTab('slide')">Слайд</button>
+            </div>
+
+            <!-- Text View -->
+            <div id="shlokaTextView">
+              <div style="display: flex; justify-content: flex-start; margin-bottom: 16px;">
+                <button onclick="toggleSyllables()"
+                  style="display: flex; align-items: center; gap: 6px; padding: 8px 16px; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 20px; cursor: pointer; font-size: 13px; font-family: system-ui; color: #666; transition: all 0.2s;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <span id="syllablesToggleText">Показать слоги</span>
+                </button>
+              </div>
+
+              <div class="transliteration" id="shlokaTransliteration">бхаджахаху ре мана шри-нанда-нандана
+                абхайа-чаранаравинда ре
+                дурлабха манава-джанама сат-санге
+                тарохо э бхава-синдху ре</div>
+
+              <div class="divider"></div>
+
+              <div class="translation">О ум, поклоняйся лотосным стопам сына Нанды, которые делают человека бесстрашным.
+                Получив человеческое тело, этот редкий дар, переплыви океан материального существования.</div>
+
+              <div class="divider"></div>
+
+              <div>
+                <div class="tattvas-label">Таттвы</div>
+                <div class="tattva-tags">
+                  <div class="tattva-tag">Душа (Атма)</div>
+                  <div class="tattva-tag">Преданное служение</div>
+                  <div class="tattva-tag">Ум</div>
+                  <div class="tattva-tag">Материальный мир</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Word by Word View -->
+            <div id="shlokaWordView" class="hidden">
+              <div style="font-size: 15px; line-height: 2; color: #333; font-family: system-ui;">
+                <p><strong style="color: #B8936E;">бхаджахаху</strong> — поклоняйся</p>
+                <p><strong style="color: #B8936E;">ре</strong> — о</p>
+                <p><strong style="color: #B8936E;">мана</strong> — ум</p>
+                <p><strong style="color: #B8936E;">шри-нанда-нандана</strong> — сын Нанды</p>
+                <p><strong style="color: #B8936E;">абхайа</strong> — бесстрашный</p>
+                <p><strong style="color: #B8936E;">чаранаравинда</strong> — лотосные стопы</p>
+              </div>
+            </div>
+
+            <!-- Slide View -->
+            <div id="shlokaSlideView" class="hidden">
+              <div
+                style="background: linear-gradient(135deg, #4a4a4a 0%, #2c2c2c 100%); border-radius: 12px; padding: 40px; text-align: center; color: white; min-height: 300px; display: flex; flex-direction: column; justify-content: center; margin-bottom: 16px;">
+                <div
+                  style="font-size: 22px; line-height: 1.8; margin-bottom: 30px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                  бхаджахаху ре мана<br>
+                  шри-нанда-нандана<br>
+                  абхайа-чаранаравинда ре
+                </div>
+                <div style="font-size: 14px; opacity: 0.9;">Говинда дас Кавираджа</div>
+              </div>
+
+              <div style="text-align: center;">
+                <button onclick="downloadSlide()"
+                  style="padding: 10px 24px; background: white; border: 1px solid #e0e0e0; border-radius: 24px; color: #666; font-size: 14px; font-family: system-ui; cursor: pointer; transition: all 0.2s;">
+                  Скачать слайд
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Study Tab Content -->
+          <div id="studyTabContent" class="hidden">
+            <!-- Sub Tabs -->
+            <div class="tabs" style="margin-bottom: 20px;">
+              <button class="tab-btn active" onclick="showStudySubTab('comments')">Комментарии</button>
+              <button class="tab-btn" onclick="showStudySubTab('similar')">Похожие шлоки</button>
+            </div>
+
+            <!-- Comments View -->
+            <div id="studyCommentsView">
+              <!-- Text Material -->
+              <div class="card" style="margin-bottom: 0; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="flex: 1;">
+                    <div style="font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px;">Значение слова
+                      "абхайа"</div>
+                    <div style="font-size: 13px; color: #999; font-family: system-ui;">Шрила Прабхупада</div>
+                  </div>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8936E" stroke-width="2"
+                    style="margin-left: 12px; flex-shrink: 0;">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Audio Material -->
+              <div class="card" style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="flex: 1;">
+                    <div style="font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px;">Лекция о природе
+                      ума</div>
+                    <div style="font-size: 13px; color: #999; font-family: system-ui;">Бхакти Вигьяна Госвами</div>
+                  </div>
+                  <button class="icon-btn" style="margin-left: 12px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8936E" stroke-width="2">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Video Material -->
+              <div class="card" style="margin-bottom: 0; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="flex: 1;">
+                    <div style="font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px;">Комментарий к
+                      Гитавали 1</div>
+                    <div style="font-size: 13px; color: #999; font-family: system-ui;">Чайтанья Чандра Чаран дас</div>
+                  </div>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8936E" stroke-width="2"
+                    style="margin-left: 12px;">
+                    <path
+                      d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Another Text Material -->
+              <div class="card" style="margin-bottom: 0; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="flex: 1;">
+                    <div style="font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px;">О редкости
+                      человеческого рождения</div>
+                    <div style="font-size: 13px; color: #999; font-family: system-ui;">Бхактивинода Тхакур</div>
+                  </div>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8936E" stroke-width="2"
+                    style="margin-left: 12px; flex-shrink: 0;">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Similar Shlokas View -->
+            <div id="studySimilarView" class="hidden">
+              <div style="font-size: 14px; color: #666; font-family: system-ui; margin-bottom: 16px;">
+                Похожие шлоки по темам:
+              </div>
+
+              <div class="card" style="margin-bottom: 12px;">
+                <div style="font-size: 16px; color: #1a1a1a; margin-bottom: 6px;">Харе кришна маха-мантра</div>
+                <div style="font-size: 13px; color: #999; font-family: system-ui;">Кали-сантарана упанишада</div>
+                <div style="font-size: 12px; color: #B8936E; font-family: system-ui; margin-top: 6px;">Связь: Поклонение
+                </div>
+              </div>
+
+              <div class="card" style="margin-bottom: 12px;">
+                <div style="font-size: 16px; color: #1a1a1a; margin-bottom: 6px;">Джая радха мадхава</div>
+                <div style="font-size: 13px; color: #999; font-family: system-ui;">Мангала-арати</div>
+                <div style="font-size: 12px; color: #B8936E; font-family: system-ui; margin-top: 6px;">Связь: Лотосные
+                  стопы</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mini Player -->
+    <div id="miniPlayer" class="mini-player hidden">
+      <div class="player-label" id="playerLabel" style="display: none;">Избранное · 1/12</div>
+      <div class="player-title">Бхаджахаху ре мана</div>
+      <div class="player-book">Гитавали</div>
+
+      <div class="player-controls">
+        <button class="icon-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#B8936E">
+            <polygon points="19 20 9 12 19 4 19 20" />
+            <rect x="5" y="4" width="2" height="16" />
+          </svg>
+        </button>
+
+        <button class="icon-btn" onclick="togglePlay()">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#B8936E" id="playIcon">
+            <rect x="6" y="4" width="4" height="16" />
+            <rect x="14" y="4" width="4" height="16" />
+          </svg>
+        </button>
+
+        <button class="icon-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#B8936E">
+            <polygon points="5 4 5 20 15 12 5 4" />
+            <rect x="17" y="4" width="2" height="16" />
+          </svg>
+        </button>
+
+        <button class="icon-btn" onclick="cycleAudioMode()" title="Режим воспроизведения">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" id="audioModeIcon">
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
+        </button>
+
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+
+        <button class="icon-btn" onclick="closePlayer()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide Modal -->
+    <div id="slideModal" class="slide-modal hidden">
+      <div class="slide-modal-content">
+        <button class="slide-modal-close" onclick="closeSlideModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        <!-- Navigation arrows -->
+        <button class="slide-nav slide-nav-prev" onclick="prevSlide()">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <button class="slide-nav slide-nav-next" onclick="nextSlide()">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+
+        <!-- Slide counter -->
+        <div class="slide-counter" id="slideCounter">1 / 3</div>
+
+        <div class="slide-text" id="slideText">
+          бхаджахаху ре мана<br>
+          шри-нанда-нандана<br>
+          абхайа-чаранаравинда ре
+        </div>
+
+        <div class="slide-author" id="slideAuthor">Говинда дас Кавираджа</div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottomNav"></nav>
+  </div>
+
+  <script>
+    let currentView = 'main';
+    let currentTab = 'catalog';
+    let currentCatalogTab = 'books';
+    let isPlaying = false;
+    let audioMode = 'once'; // 'once', 'loop', 'playlist'
+    let currentCategory = null;
+    let currentShlokaMainTab = 'shloka';
+    let currentShlokaSubTab = 'text';
+    let currentStudySubTab = 'comments';
+    let isPlayingCollection = false; // Играет ли коллекция
+    let currentSlideIndex = 0;
+    let syllablesMode = false; // Режим отображения слогов
+
+    // Sample shlokas data
+    const sampleShlokas = [
+      { id: 1, title: 'эте чамша-калах пумсах...', book: 'Шримад-Бхагаватам' },
+      { id: 2, title: 'дхритараштра увача дхарма-кшетре куру-кшетре', book: 'Бхагавад-гита' },
+      { id: 3, title: 'радха-кришна прана мора джугала-кишора', book: 'Гитавали' }
+    ];
+
+    // Sample slides data
+    const slides = [
+      {
+        text: 'бхаджахаху ре мана<br>шри-нанда-нандана<br>абхайа-чаранаравинда ре',
+        author: 'Говинда дас Кавираджа'
+      },
+      {
+        text: 'джая радха-мадхава<br>кунджа-бихари<br>гопи-джана-валлабха<br>гири-вара-дхари',
+        author: 'Шрила Прабхупада'
+      },
+      {
+        text: 'говинда джая джая<br>гопала джая джая<br>радха-рамана хари<br>говинда джая джая',
+        author: 'Говинда дас Кавираджа'
+      }
+    ];
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', function () {
+      updateNav();
+      updateAudioModeIcon();
+    });
+
+    function cycleAudioMode() {
+      // Cycle through modes: once → loop → playlist → once
+      if (audioMode === 'once') {
+        audioMode = 'loop';
+      } else if (audioMode === 'loop') {
+        audioMode = 'playlist';
+      } else {
+        audioMode = 'once';
+      }
+      updateAudioModeIcon();
+    }
+
+    function updateAudioModeIcon() {
+      const icon = document.getElementById('audioModeIcon');
+      if (!icon) return;
+
+      if (audioMode === 'once') {
+        // Circle with number 1 icon
+        icon.innerHTML = '<circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">1</text>';
+        icon.setAttribute('title', 'Один раз');
+      } else if (audioMode === 'loop') {
+        // Loop icon
+        icon.innerHTML = '<path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/>';
+        icon.setAttribute('title', 'Зациклить');
+      } else if (audioMode === 'playlist') {
+        // Playlist icon
+        icon.innerHTML = '<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>';
+        icon.setAttribute('title', 'Вся коллекция');
+      }
+    }
+
+    function goHome() {
+      currentView = 'main';
+      currentTab = 'catalog';
+      currentCategory = null;
+
+      // Hide all views
+      document.getElementById('categoryView').classList.add('hidden');
+      document.getElementById('collectionView').classList.add('hidden');
+      document.getElementById('shlokaView').classList.add('hidden');
+      document.getElementById('myShlokas View').classList.add('hidden');
+
+      // Show catalog
+      document.getElementById('catalogView').classList.remove('hidden');
+      document.getElementById('searchBox').style.display = 'flex';
+      document.getElementById('catalogTabs').style.display = 'flex';
+
+      updateNav();
+    }
+
+    function showShlokaMainTab(tab) {
+      currentShlokaMainTab = tab;
+
+      const shlokaContent = document.getElementById('shlokaTabContent');
+      const studyContent = document.getElementById('studyTabContent');
+      const mainTabBtns = document.querySelectorAll('#shlokaView .section > .tabs .tab-btn');
+
+      if (tab === 'shloka') {
+        shlokaContent.classList.remove('hidden');
+        studyContent.classList.add('hidden');
+        mainTabBtns[0].classList.add('active');
+        mainTabBtns[1].classList.remove('active');
+      } else {
+        shlokaContent.classList.add('hidden');
+        studyContent.classList.remove('hidden');
+        mainTabBtns[0].classList.remove('active');
+        mainTabBtns[1].classList.add('active');
+      }
+    }
+
+    function showShlokaSubTab(tab) {
+      currentShlokaSubTab = tab;
+
+      const textView = document.getElementById('shlokaTextView');
+      const wordView = document.getElementById('shlokaWordView');
+      const slideView = document.getElementById('shlokaSlideView');
+      const subTabBtns = document.querySelectorAll('#shlokaTabContent > .tabs .tab-btn');
+
+      textView.classList.add('hidden');
+      wordView.classList.add('hidden');
+      slideView.classList.add('hidden');
+
+      subTabBtns.forEach(btn => btn.classList.remove('active'));
+
+      if (tab === 'text') {
+        textView.classList.remove('hidden');
+        subTabBtns[0].classList.add('active');
+      } else if (tab === 'word') {
+        wordView.classList.remove('hidden');
+        subTabBtns[1].classList.add('active');
+      } else if (tab === 'slide') {
+        slideView.classList.remove('hidden');
+        subTabBtns[2].classList.add('active');
+      }
+    }
+
+    function showStudySubTab(tab) {
+      currentStudySubTab = tab;
+
+      const commentsView = document.getElementById('studyCommentsView');
+      const similarView = document.getElementById('studySimilarView');
+      const subTabBtns = document.querySelectorAll('#studyTabContent > .tabs .tab-btn');
+
+      commentsView.classList.add('hidden');
+      similarView.classList.add('hidden');
+
+      subTabBtns.forEach(btn => btn.classList.remove('active'));
+
+      if (tab === 'comments') {
+        commentsView.classList.remove('hidden');
+        subTabBtns[0].classList.add('active');
+      } else {
+        similarView.classList.remove('hidden');
+        subTabBtns[1].classList.add('active');
+      }
+    }
+
+    function togglePlayerMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('playerAudioMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function selectPlayerAudioMode(mode) {
+      audioMode = mode;
+      const menu = document.getElementById('playerAudioMenu');
+      menu.classList.add('hidden');
+
+      // Update menu items
+      const items = menu.querySelectorAll('.audio-menu-item');
+      items.forEach(item => item.classList.remove('active'));
+
+      if (mode === 'once') items[0].classList.add('active');
+      else if (mode === 'loop') items[1].classList.add('active');
+      else if (mode === 'playlist') items[2].classList.add('active');
+    }
+
+    // Close menus when clicking outside
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.play-btn-container') && !event.target.closest('.player-controls')) {
+        document.querySelectorAll('.audio-menu').forEach(m => {
+          m.classList.add('hidden');
+        });
+      }
+    });
+
+    function renderShlokasList(containerId, shlokas) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = shlokas.map((shloka, idx) => `
+        <div class="shloka-item">
+          <div class="shloka-info" onclick="openShloka()">
+            <div class="shloka-title">${shloka.title}</div>
+            <div class="shloka-book">${shloka.book}</div>
+          </div>
+          <button class="icon-btn" onclick="openShlokaSlide(); event.stopPropagation();" title="Посмотреть слайд">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8936E" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" onclick="playAudio(); event.stopPropagation();" title="Прослушать">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8936E" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function updateNav() {
+      const nav = document.getElementById('bottomNav');
+
+      if (currentView === 'main') {
+        nav.innerHTML = `
+          <button class="nav-btn ${currentTab === 'catalog' ? 'active' : ''}" onclick="showMainTab('catalog')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${currentTab === 'catalog' ? '#B8936E' : '#999'}" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <path d="M9 22V12h6v10"/>
+            </svg>
+            <span class="nav-label" style="color: ${currentTab === 'catalog' ? '#B8936E' : '#999'}; font-weight: ${currentTab === 'catalog' ? '500' : '400'};">Каталог</span>
+          </button>
+          
+          <button class="nav-btn ${currentTab === 'my-shlokas' ? 'active' : ''}" onclick="showMainTab('my-shlokas')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${currentTab === 'my-shlokas' ? '#B8936E' : '#999'}" stroke-width="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="nav-label" style="color: ${currentTab === 'my-shlokas' ? '#B8936E' : '#999'}; font-weight: ${currentTab === 'my-shlokas' ? '500' : '400'};">Мои шлоки</span>
+          </button>
+          
+          <button class="nav-btn ${currentTab === 'about' ? 'active' : ''}" onclick="showMainTab('about')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${currentTab === 'about' ? '#B8936E' : '#999'}" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4"/>
+              <path d="M12 8h.01"/>
+            </svg>
+            <span class="nav-label" style="color: ${currentTab === 'about' ? '#B8936E' : '#999'}; font-weight: ${currentTab === 'about' ? '500' : '400'};">О проекте</span>
+          </button>
+        `;
+      } else if (currentView === 'category' || currentView === 'collection') {
+        nav.innerHTML = `
+          <button class="nav-btn" onclick="backToMain()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Назад</span>
+          </button>
+          
+          <button class="nav-btn" onclick="openAllSlides()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Смотреть всё</span>
+          </button>
+          
+          <button class="nav-btn" onclick="playCollection()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Слушать всё</span>
+          </button>
+          
+          <button class="nav-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Редактировать</span>
+          </button>
+        `;
+      } else if (currentView === 'shloka') {
+        nav.innerHTML = `
+          <button class="nav-btn" onclick="backFromShloka()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Назад</span>
+          </button>
+          
+          <button class="nav-btn" onclick="playAudio()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Прослушать</span>
+          </button>
+          
+          <button class="nav-btn">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="nav-label" style="color: #666;">Добавить</span>
+          </button>
+        `;
+      }
+    }
+
+    function showMainTab(tab) {
+      currentTab = tab;
+      currentView = 'main';
+
+      // Hide share button
+      document.getElementById('shareBtn').style.display = 'none';
+
+      const catalogView = document.getElementById('catalogView');
+      const myShlokas = document.getElementById('myShlokas View');
+      const aboutView = document.getElementById('aboutView');
+      const searchBox = document.getElementById('searchBox');
+      const catalogTabs = document.getElementById('catalogTabs');
+
+      // Hide all views
+      document.getElementById('categoryView').classList.add('hidden');
+      document.getElementById('collectionView').classList.add('hidden');
+      document.getElementById('shlokaView').classList.add('hidden');
+      catalogView.classList.add('hidden');
+      myShlokas.classList.add('hidden');
+      aboutView.classList.add('hidden');
+
+      if (tab === 'catalog') {
+        catalogView.classList.remove('hidden');
+        searchBox.style.display = 'flex';
+        catalogTabs.style.display = 'flex';
+      } else if (tab === 'my-shlokas') {
+        myShlokas.classList.remove('hidden');
+        searchBox.style.display = 'flex';
+        catalogTabs.style.display = 'none';
+      } else if (tab === 'about') {
+        aboutView.classList.remove('hidden');
+        searchBox.style.display = 'none';
+        catalogTabs.style.display = 'none';
+      }
+
+      updateNav();
+    }
+
+    function showCatalogTab(tab) {
+      currentCatalogTab = tab;
+
+      const booksTab = document.getElementById('booksTab');
+      const authorsTab = document.getElementById('authorsTab');
+      const tattvasTab = document.getElementById('tattvasTab');
+      const collectionsTab = document.getElementById('collectionsTab');
+      const tabBtns = document.querySelectorAll('#catalogTabs .tab-btn');
+
+      booksTab.classList.add('hidden');
+      authorsTab.classList.add('hidden');
+      tattvasTab.classList.add('hidden');
+      collectionsTab.classList.add('hidden');
+
+      if (tab === 'books') {
+        booksTab.classList.remove('hidden');
+        tabBtns[0].classList.add('active');
+        tabBtns[1].classList.remove('active');
+        tabBtns[2].classList.remove('active');
+        tabBtns[3].classList.remove('active');
+      } else if (tab === 'authors') {
+        authorsTab.classList.remove('hidden');
+        tabBtns[0].classList.remove('active');
+        tabBtns[1].classList.add('active');
+        tabBtns[2].classList.remove('active');
+        tabBtns[3].classList.remove('active');
+      } else if (tab === 'tattvas') {
+        tattvasTab.classList.remove('hidden');
+        tabBtns[0].classList.remove('active');
+        tabBtns[1].classList.remove('active');
+        tabBtns[2].classList.add('active');
+        tabBtns[3].classList.remove('active');
+      } else if (tab === 'collections') {
+        collectionsTab.classList.remove('hidden');
+        tabBtns[0].classList.remove('active');
+        tabBtns[1].classList.remove('active');
+        tabBtns[2].classList.remove('active');
+        tabBtns[3].classList.add('active');
+      }
+    }
+
+    function openCategory(type, name, count) {
+      currentView = 'category';
+      currentCategory = { type, name, count };
+
+      // Hide all views
+      document.getElementById('catalogView').classList.add('hidden');
+      document.getElementById('myShlokas View').classList.add('hidden');
+      document.getElementById('collectionView').classList.add('hidden');
+      document.getElementById('shlokaView').classList.add('hidden');
+
+      // Show category view
+      const categoryView = document.getElementById('categoryView');
+      categoryView.classList.remove('hidden');
+
+      document.getElementById('searchBox').style.display = 'none';
+      document.getElementById('catalogTabs').style.display = 'none';
+
+      // Update category details
+      document.getElementById('categoryName').textContent = name;
+      document.getElementById('categoryCount').textContent = count.toLocaleString();
+
+      // Render shlokas
+      renderShlokasList('categoryShlokasList', sampleShlokas);
+
+      updateNav();
+    }
+
+    function openCollection(collectionId) {
+      currentView = 'collection';
+
+      // Hide all views
+      document.getElementById('catalogView').classList.add('hidden');
+      document.getElementById('myShlokas View').classList.add('hidden');
+      document.getElementById('categoryView').classList.add('hidden');
+      document.getElementById('shlokaView').classList.add('hidden');
+
+      const collectionView = document.getElementById('collectionView');
+      collectionView.classList.remove('hidden');
+
+      document.getElementById('searchBox').style.display = 'none';
+      document.getElementById('catalogTabs').style.display = 'none';
+
+      // Update collection details
+      if (collectionId === 'favorites') {
+        document.getElementById('collectionIcon').textContent = '⭐';
+        document.getElementById('collectionName').textContent = 'Избранное';
+        document.getElementById('collectionCount').textContent = '12';
+      } else if (collectionId === 'daily') {
+        document.getElementById('collectionIcon').textContent = '🌅';
+        document.getElementById('collectionName').textContent = 'Ежедневная практика';
+        document.getElementById('collectionCount').textContent = '8';
+      }
+
+      // Render shlokas
+      renderShlokasList('collectionShlokasList', sampleShlokas);
+
+      updateNav();
+    }
+
+    function openShloka() {
+      currentView = 'shloka';
+
+      // Hide all views
+      document.getElementById('catalogView').classList.add('hidden');
+      document.getElementById('myShlokas View').classList.add('hidden');
+      document.getElementById('categoryView').classList.add('hidden');
+      document.getElementById('collectionView').classList.add('hidden');
+
+      const shlokaView = document.getElementById('shlokaView');
+      shlokaView.classList.remove('hidden');
+
+      document.getElementById('searchBox').style.display = 'none';
+      document.getElementById('catalogTabs').style.display = 'none';
+
+      // Show share button
+      document.getElementById('shareBtn').style.display = 'block';
+
+      // Reset to default tab (Shloka -> Text)
+      showShlokaMainTab('shloka');
+      showShlokaSubTab('text');
+
+      updateNav();
+    }
+
+    function openShlokaSlide() {
+      currentSlideIndex = 0;
+      updateSlideContent();
+      const modal = document.getElementById('slideModal');
+      modal.classList.remove('hidden');
+    }
+
+    function openAllSlides() {
+      currentSlideIndex = 0;
+      updateSlideContent();
+      const modal = document.getElementById('slideModal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeSlideModal() {
+      const modal = document.getElementById('slideModal');
+      modal.classList.add('hidden');
+    }
+
+    function prevSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+      updateSlideContent();
+    }
+
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      updateSlideContent();
+    }
+
+    function updateSlideContent() {
+      const slide = slides[currentSlideIndex];
+      document.getElementById('slideText').innerHTML = slide.text;
+      document.getElementById('slideAuthor').textContent = slide.author;
+      document.getElementById('slideCounter').textContent = `${currentSlideIndex + 1} / ${slides.length}`;
+    }
+
+    function downloadSlide() {
+      // В будущем здесь будет генерация изображения слайда и скачивание
+      alert('Функция скачивания слайда будет реализована');
+    }
+
+    function toggleSyllables() {
+      syllablesMode = !syllablesMode;
+      const transliteration = document.getElementById('shlokaTransliteration');
+      const toggleText = document.getElementById('syllablesToggleText');
+
+      if (syllablesMode) {
+        // Показываем слоги с ударениями
+        transliteration.innerHTML = 'бха<span class="stress">джа</span>хаху ре <span class="stress">ма</span>на шри-<span class="stress">нан</span>да-нан<span class="stress">да</span>на\nа<span class="stress">бха</span>йа-ча<span class="stress">ра</span>на<span class="stress">ра</span>винда ре\nдур<span class="stress">ла</span>бха <span class="stress">ма</span>нава-<span class="stress">джа</span>нама <span class="stress">сат</span>-санге\nта<span class="stress">ро</span>хо э <span class="stress">бха</span>ва-<span class="stress">син</span>дху ре';
+        transliteration.classList.add('syllables-mode');
+        toggleText.textContent = 'Скрыть слоги';
+      } else {
+        // Показываем обычный текст
+        transliteration.innerHTML = 'бхаджахаху ре мана шри-нанда-нандана\nабхайа-чаранаравинда ре\nдурлабха манава-джанама сат-санге\nтарохо э бхава-синдху ре';
+        transliteration.classList.remove('syllables-mode');
+        toggleText.textContent = 'Показать слоги';
+      }
+    }
+
+    function backFromShloka() {
+      // Hide share button
+      document.getElementById('shareBtn').style.display = 'none';
+
+      if (currentCategory) {
+        // Back to category
+        currentView = 'category';
+        document.getElementById('shlokaView').classList.add('hidden');
+        document.getElementById('categoryView').classList.remove('hidden');
+      } else {
+        // Back to collection
+        currentView = 'collection';
+        document.getElementById('shlokaView').classList.add('hidden');
+        document.getElementById('collectionView').classList.remove('hidden');
+      }
+
+      updateNav();
+    }
+
+    function backToMain() {
+      currentView = 'main';
+      currentCategory = null;
+
+      // Hide all views
+      document.getElementById('categoryView').classList.add('hidden');
+      document.getElementById('collectionView').classList.add('hidden');
+      document.getElementById('shlokaView').classList.add('hidden');
+
+      const searchBox = document.getElementById('searchBox');
+      searchBox.style.display = 'flex';
+
+      if (currentTab === 'catalog') {
+        document.getElementById('catalogView').classList.remove('hidden');
+        document.getElementById('catalogTabs').style.display = 'flex';
+      } else {
+        document.getElementById('myShlokas View').classList.remove('hidden');
+      }
+
+      updateNav();
+    }
+
+    function playCollection() {
+      const miniPlayer = document.getElementById('miniPlayer');
+      const playerLabel = document.getElementById('playerLabel');
+      miniPlayer.classList.remove('hidden');
+      playerLabel.style.display = 'block'; // Show collection progress
+      isPlaying = true;
+      isPlayingCollection = true;
+    }
+
+    function playAudio() {
+      const miniPlayer = document.getElementById('miniPlayer');
+      const playerLabel = document.getElementById('playerLabel');
+      miniPlayer.classList.remove('hidden');
+      playerLabel.style.display = 'none'; // Hide label for single shloka
+      isPlaying = true;
+      isPlayingCollection = false;
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const icon = document.getElementById('playIcon');
+      if (isPlaying) {
+        icon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+      } else {
+        icon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+      }
+    }
+
+    function closePlayer() {
+      const miniPlayer = document.getElementById('miniPlayer');
+      miniPlayer.classList.add('hidden');
+      isPlaying = false;
+    }
+  </script>
+</body>
+
+</html>
